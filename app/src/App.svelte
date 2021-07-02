@@ -22,7 +22,7 @@
 		<p>Welcome to LinkMania</p>
 	</Route>
 	<Route path="/tree/:user" let:params>
-		<p>data: uid {params.user}</p>
+		<p>data: {params.user}</p>
 	</Route>
 </Router>
 
