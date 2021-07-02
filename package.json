@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "buildSvelte": "cd app/ && npm i && npm run build",
-    "buildServer": "cd server/ && npm i",
-    "start": "npm run buildSvelte && npm run buildServer && node server/main.js"
+    "heroku-postinstall": "cd app/ && npm i && npm run build",
+    "start": "cd server/ && npm i && node server/main.js"
   },
   "keywords": [],
   "author": "",
