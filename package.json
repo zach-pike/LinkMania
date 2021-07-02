@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "buildSvelte": "cd app/ && npm i && npm run build",
+    "buildServer": "cd server/ && npm i",
     "start": "node server/main.js"
   },
   "keywords": [],
