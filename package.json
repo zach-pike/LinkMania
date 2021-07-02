@@ -9,5 +9,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "npm": ">= 7.17.0",
+    "node": ">= 14.17.0"
+  }
 }
