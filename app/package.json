@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "rollup -c",
+    "build": "npx rollup -c",
     "dev": "rollup -c -w",
     "start": "",
     "check": "svelte-check --tsconfig ./tsconfig.json"
