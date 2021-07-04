@@ -5,8 +5,7 @@
     export let metadata;
 
     import { db } from './firebase';
-    import { collectionData } from 'rxfire/firestore';
-    import { startWith } from 'rxjs/operators';
+    
     import { onMount } from 'svelte';
     import {
         Jumbotron
