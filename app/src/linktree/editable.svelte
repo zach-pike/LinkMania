@@ -1,13 +1,16 @@
 <script lang="ts">
+    import { Toast, ToastBody, ToastHeader, Input, Label, Button } from "sveltestrap"
     import Listitem from "./listitem.svelte";
-    import { db } from "../firebase"
+
     import { onMount } from "svelte";
 
-    import { Toast, ToastBody, ToastHeader, Input, Label, Button } from "sveltestrap"
+    export let uid: string;
+
+    //firebase stuff
+    import { db } from "../firebase"
     import { collectionData } from "rxfire/firestore";
     import { startWith } from "rxjs/operators";
     import type { Observable } from "rxjs";
-    export let uid: string;
 
     let query = db.collection("users").doc(uid).collection("links").orderBy("created")
 
@@ -20,6 +23,7 @@
 
     let links = collectionData(query, "id").pipe(startWith([])) as Observable<Link[]>;
 
+    //for debugging remove in prod
     onMount(() => {
         links.subscribe((data) => console.log(data))
     })

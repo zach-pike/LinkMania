@@ -4,13 +4,11 @@
     export let uid: string;
     export let metadata;
 
+    //firebase stuff
     import { db } from './firebase';
-    
-    import { onMount } from 'svelte';
-    import {
-        Jumbotron
-    } from "sveltestrap";
 
+    //add initial firebase data
+    import { onMount } from 'svelte';
     onMount(() => {
         let maybe = db.collection("users").doc(uid)
 
@@ -19,14 +17,11 @@
             if (!doc.exists) {
                 await db.collection("users").doc(uid).set({ uid })
 
-                //fix
+                //add sub collection
                 db.collection("users").doc(uid).collection("links").add({ linkText: "MyFirstLink", linkHref: "https://www.google.com", created: Date.now() })
             }
         })
     })
-
-    //check if user has document
-
 </script>
 
 <div class="jumbotron welcome-banner">

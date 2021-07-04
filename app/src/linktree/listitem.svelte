@@ -2,8 +2,10 @@
     import { createEventDispatcher } from "svelte"
     import { Button } from "sveltestrap"
 
+    //create event dispatcher
     let dispatch = createEventDispatcher()
 
+    //arguments
     export let isLinkOwner: boolean;
     export let linkText: string;
     export let linkHref: string;
