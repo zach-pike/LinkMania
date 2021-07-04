@@ -9,10 +9,12 @@
 		NavbarBrand,
 		NavItem,
 		Container,
-		NavLink
+		NavLink,
+		Nav
 	} from "sveltestrap"
 	import Login from "./login.svelte";
 	import Homepage from "./homepage.svelte"
+	import EditableList from "./linktree/editable.svelte"
 
 	import { auth } from './firebase';
     import { authState } from 'rxfire/auth';
@@ -25,9 +27,14 @@
 	<NavbarBrand>
 		<span class="LinkManiaLogoLink">Link</span>Mainia
 	</NavbarBrand>
-	<NavItem class="d-flex justify-content-right">
-		<NavLink href="/mylinks">My Links</NavLink>
-	</NavItem>
+	<Nav>
+		<NavItem class="justify-content-right">
+			<NavLink href="/mylinks">My Links</NavLink>
+		</NavItem>
+		<NavItem>
+			<NavLink href="#" on:click="{() => { auth.signOut(); location.replace("/") }}">Logout</NavLink>
+		</NavItem>
+	</Nav>
 </Navbar>
 
 <Container>
@@ -45,7 +52,12 @@
 		</Route>
 
 		<Route path="/mylinks">
-			<p>Your links</p>
+			{#if user} 
+				<EditableList uid={user.uid} />
+				{:else}
+				<!-- Send back to login page bcs no user -->
+				<p>Please <a href="/">Login</a></p>
+			{/if}
 		</Route>
 	</Router>
 </Container>

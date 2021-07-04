@@ -10,28 +10,21 @@
     import { onMount } from 'svelte';
     import {
         Jumbotron
-    } from "sveltestrap"
-
+    } from "sveltestrap";
 
     onMount(() => {
         let maybe = db.collection("users").doc(uid)
 
         //get doc and see if it exists
-        maybe.get().then((doc) => {
+        maybe.get().then(async (doc) => {
             if (!doc.exists) {
-                db.collection("users").doc(uid).set({ uid, links: [] })
+                await db.collection("users").doc(uid).set({ uid })
+
+                //fix
+                db.collection("users").doc(uid).collection("links").add({ linkText: "MyFirstLink", linkHref: "https://www.google.com", created: Date.now() })
             }
         })
     })
-
-    interface Document {
-        uid: string;
-        links: Array<{
-            created: number;
-            linkName: string;
-            linkHref: string;
-        }>
-    }
 
     //check if user has document
 
