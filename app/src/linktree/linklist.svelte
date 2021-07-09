@@ -23,8 +23,11 @@
     <div class="d-flex flex-column">
         {#await db.collection("users").doc(uidToFind).get()}
             <h4>Loading</h4>
-        {:then docData} 
-            <h4>{docData.data().displayName}'s Links<img src="{docData.data().photoURL}" width="40" alt="photoURL" class="rounded-3" /></h4>
+        {:then docData}
+            <div>
+                <h4 class="d-inline">{docData.data().displayName}'s Links</h4>
+                <img src="{docData.data().photoURL}" width="40" alt="photoURL" class="rounded-3" />
+            </div>
         {/await}
         {#each $documents as document}
             <ListItem id="{null}" linkText="{document.linkText}" linkHref="{document.linkHref}" isLinkOwner="{false}" />
