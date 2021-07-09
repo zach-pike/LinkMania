@@ -61,7 +61,7 @@
     function AddLink() {
         db.collection("users").doc(uid).collection("links").add({ linkText: addText, linkHref: addHref, created: Date.now() })
         addHref = ""
-        addHref = ""
+        addText = ""
     }
 
     let open = false;
