@@ -36,6 +36,7 @@
         border-style: solid;
         border-color: black;
         border-width: 1px;
+        border-radius: 4px;
 
         margin: 3px;
     }
