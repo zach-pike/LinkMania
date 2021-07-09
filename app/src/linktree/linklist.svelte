@@ -2,7 +2,7 @@
     import ListItem from "./listitem.svelte"
     export let uidToFind: string;
 
-    import { collectionData } from 'rxfire/firestore';
+    import { collectionData, docData } from 'rxfire/firestore';
     import { startWith } from 'rxjs/operators';
     import { db } from "../firebase";
     import { onMount } from "svelte";
@@ -21,6 +21,11 @@
 
 <div class="d-flex mt-4 justify-content-center">
     <div class="d-flex flex-column">
+        {#await db.collection("users").doc(uidToFind).get()}
+            <h4>Loading</h4>
+        {:then docData} 
+            <h4>{docData.data().displayName}'s Links<img src="{docData.data().photoURL}" width="40" alt="photoURL" class="rounded-3" /></h4>
+        {/await}
         {#each $documents as document}
             <ListItem id="{null}" linkText="{document.linkText}" linkHref="{document.linkHref}" isLinkOwner="{false}" />
         {/each}

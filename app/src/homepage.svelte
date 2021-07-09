@@ -2,7 +2,6 @@
     export let displayName: string;
     export let photoURL: string;
     export let uid: string;
-    export let metadata;
 
     //firebase stuff
     import { db } from './firebase';
@@ -15,7 +14,7 @@
         //get doc and see if it exists
         maybe.get().then(async (doc) => {
             if (!doc.exists) {
-                await db.collection("users").doc(uid).set({ uid })
+                await db.collection("users").doc(uid).set({ uid, displayName, photoURL })
 
                 //add sub collection
                 db.collection("users").doc(uid).collection("links").add({ linkText: "MyFirstLink", linkHref: "https://www.google.com", created: Date.now() })
