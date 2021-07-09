@@ -52,7 +52,7 @@
 		</Route>
 		
 		<Route path="/tree/:user" let:params>
-			<Linklist />
+			<Linklist uidToFind="{params.user}" />
 		</Route>
 
 		<Route path="/mylinks">

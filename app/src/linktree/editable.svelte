@@ -119,6 +119,9 @@
                       on:edit="{ (data) => edit(data.detail.id) }" 
             />
         {/each}
+        {#if $links.length == 0}
+            <h1>Add some links!</h1>
+        {/if}
     </div>
 </div>
 
