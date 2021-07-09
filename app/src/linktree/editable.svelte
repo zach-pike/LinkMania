@@ -68,6 +68,9 @@
     const toggle = () => (open = !open);
 </script>
 
+<h4 class="text-center">Your link URL:</h4>
+<p class="text-center"><a href="{`${window.location.origin}/tree/${uid}`}">{`${window.location.origin}/tree/${uid}`}</a></p>
+
 <h4 class="text-center mt-4">Add a Link</h4>
 
 <Modal isOpen={open} {toggle}>

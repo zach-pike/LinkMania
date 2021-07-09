@@ -12,12 +12,16 @@
 		NavLink,
 		Nav
 	} from "sveltestrap"
+
+
 	import Login from "./login.svelte";
 	import Homepage from "./homepage.svelte"
 	import EditableList from "./linktree/editable.svelte"
+	import Linklist from "./linktree/linklist.svelte";
 
 	import { auth } from './firebase';
     import { authState } from 'rxfire/auth';
+
     let user;
 
     const unsubscribe = authState(auth).subscribe(u => user = u);
@@ -48,7 +52,7 @@
 		</Route>
 		
 		<Route path="/tree/:user" let:params>
-			<p>data: {params.user}</p>
+			<Linklist />
 		</Route>
 
 		<Route path="/mylinks">
