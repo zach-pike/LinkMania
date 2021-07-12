@@ -1,4 +1,5 @@
 */node_modules/
-app/public/devBuild
+app/public/build
+.firebase/*.cache
 
 app/.DS_Store
