@@ -35,9 +35,11 @@
 		<NavItem class="justify-content-right">
 			<NavLink href="/mylinks">My Links</NavLink>
 		</NavItem>
-		<NavItem>
-			<NavLink href="#" on:click="{() => { auth.signOut(); location.replace("/") }}">Logout</NavLink>
-		</NavItem>
+		{#if user}
+			<NavItem>
+				<NavLink href="#" on:click="{() => { auth.signOut(); location.replace("/") }}">Logout</NavLink>
+			</NavItem>
+		{/if}
 	</Nav>
 </Navbar>
 
